@@ -1,0 +1,106 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<style type="text/css">
+	body{
+	margin: 0;
+	padding: 0;
+}
+.container{
+	width:100%;
+	height:auto;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+h3{
+	font-style:strong;
+}
+.about{
+	width:100%;
+	height: 600px;
+	background-image: url(https://i.ibb.co/9bZPZgp/dsc4641-copy-880074f1fd6d9422f6c3fded126a54c8.jpg); /*Couldn't link the image so i used linear-gradient background LOL!*/
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.text{
+	font-size: 30px;
+	color:#fff;
+	font-family: sans-serif;
+	text-shadow: 0px 15px 12px #000;
+}
+.line{
+	width:200px;
+	height: 8px;
+	background-color: #17ff8d;
+	display: block;
+	position: relative;
+	border-radius: 5px;
+	left:10%;
+	box-shadow: 0px 15px 12px 0px #000;
+}
+.content{
+	width:100%;
+	height:auto;
+	background-color: #ebedfa;
+	font-size: 23px;
+	font-family: audiowide;
+	color:#333;
+	line-height: 30px;
+	text-align: center;
+}
+
+footer{
+	width:100%;
+	height: auto;
+	background-color: #333;
+	color: #17ff8d;
+	font-size: 23px;
+	text-align: center;
+	line-height: 50px;
+}
+</style>
+
+
+<br>
+<br>																
+	<div class="container">
+		<div class="about">
+			<div class="text">
+				<h1>&nbsp;About Us</h1>
+				<div class="line"></div>
+			</div>
+		</div>
+
+		<div class="content">
+			<br><br>
+			  <h1>About Us - Crime Rate Detection</h1>
+  <p>Welcome to Crime Rate Detection, your trusted source for analyzing crime rates based on geographical coordinates. Our platform utilizes advanced machine learning algorithms to assess the safety level of any given location and provides insights into the crime rate within a city or region.</p>
+
+  <h2>Our Mission</h2>
+  <p>At Crime Rate Detection, our mission is to empower individuals and communities with accurate information about crime rates, allowing them to make informed decisions about their safety and well-being. By leveraging the power of machine learning, we aim to provide users with valuable insights that contribute to creating safer environments.</p>
+
+  <h2>How It Works</h2>
+  <p>Our platform integrates seamlessly with Google Maps, allowing users to pinpoint any location on the map and retrieve real-time crime rate data. Upon selecting a location, our system analyzes historical crime data, identifies patterns, and predicts the safety level of the area. Users receive a comprehensive report indicating the percentage safety rating of the city or region, enabling them to assess potential risks and take appropriate precautions.</p>
+
+  <h2>Our Approach</h2>
+  <p>Crime Rate Detection employs state-of-the-art machine learning techniques, including clustering algorithms and statistical analysis, to process vast amounts of crime data efficiently. By identifying correlations between various factors such as crime type, location, and time, our system generates accurate predictions and actionable insights.</p>
+
+  <h2>Join Us in Building Safer Communities</h2>
+  <p>Together, we can leverage the power of technology to create safer environments for everyone. Join us on our mission to empower individuals and communities with valuable insights into crime rates, fostering a culture of safety and security worldwide.</p>
+
+  <h3>Contact Us</h3>
+  <p>Have questions or feedback? We'd love to hear from you! Feel free to reach out to our team via the contact form on our website, and we'll be happy to assist you.</p>
+
+  <footer>
+    <p>Thank you for choosing Crime Rate Detection.</p>
+  </footer>
+
+ {% endblock %}
