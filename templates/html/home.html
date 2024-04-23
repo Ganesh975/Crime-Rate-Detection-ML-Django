@@ -1,0 +1,103 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<head>
+  <title>Location Picker</title>
+  <!-- Replace YOUR_API_KEY with your actual API key -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD92buCD3LwJdQIaq1vit2kHsmkLbMVq58&libraries=places"></script>
+  <style>
+    /* Style the map container */
+    #map {
+      height: 400px;
+      width: 60%;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+  <h1>Location Picker</h1>
+  <br>
+
+  <center>  <div id="map" ></div></center>
+  <br>
+  <center>
+    <div id="coordinates">
+    Latitude: <span id="latitude" style=" font-weight: bold">{{ long }}</span><br>
+    Longitude: <span id="longitude" style=" font-weight: bold">{{ lat }}</span>
+  </div>
+  <br>
+  <!-- Submit button -->
+<form id="locationForm" method="post" action="{% url 'home' %}">
+  {% csrf_token %}
+
+  <input type="text" id="latitudeInput" name="latitude" value="{{ long }}">
+  <input type="text" id="longitudeInput" name="longitude"value="{{ lat }}">
+
+  <button type="submit">Submit</button>
+</form>
+<br>
+
+
+
+<!-- Display output -->
+{% if output %}
+<div style="font-weight: bold" >
+    <p >{{ output|linebreaks }}</p>
+</div>
+{% endif %}
+
+<!-- Display scatter plot -->
+{% if scatter_plot %}
+<br>
+
+
+<div>
+    <img src="data:image/png;base64,{{ scatter_plot }}" alt="Scatter Plot">
+</div>
+</center>
+<br>
+<br>
+
+{% endif %}
+
+
+
+
+  <script>
+    // Initialize the map
+    function initMap() {
+      // Create a new map instance
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 17.385044, lng: 78.486671 }, // Default center (Hyderabad, Telangana)
+        zoom: 12 // Default zoom level
+      });
+
+      // Add a click event listener to the map
+      map.addListener('click', function(event) {
+        // Get the latitude and longitude of the clicked point
+        var latitude = event.latLng.lat();
+        var longitude = event.latLng.lng();
+        
+        // Display the latitude and longitude in the console
+        console.log('Latitude: ' + latitude);
+        console.log('Longitude: ' + longitude);
+          document.getElementById('latitude').innerText = latitude.toFixed(6);
+        document.getElementById('longitude').innerText = longitude.toFixed(6);
+
+         document.getElementById('latitudeInput').value = latitude.toFixed(6);
+      document.getElementById('longitudeInput').value = longitude.toFixed(6);
+        
+        // You can use the latitude and longitude here as needed
+        // For example, you can display them on the page or send them to the server
+      });
+    }
+  </script>
+
+  <!-- Load the map after the page has loaded -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD92buCD3LwJdQIaq1vit2kHsmkLbMVq58&callback=initMap"></script>
+
+
+{% endblock %}
